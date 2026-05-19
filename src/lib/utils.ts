@@ -48,11 +48,11 @@ export function formatRelativeDate(date: string): string {
 }
 
 export const priorityConfig: Record<IssuePriority, { label: string; color: string; icon: string }> = {
-  lowest: { label: 'Lowest', color: 'text-slate-400', icon: '↓' },
-  low: { label: 'Low', color: 'text-blue-400', icon: '↙' },
-  medium: { label: 'Medium', color: 'text-yellow-400', icon: '→' },
-  high: { label: 'High', color: 'text-orange-400', icon: '↗' },
-  highest: { label: 'Highest', color: 'text-red-400', icon: '↑' },
+  lowest: { label: 'Lowest', color: 'text-gray-400 dark:text-gray-500', icon: '↓' },
+  low: { label: 'Low', color: 'text-sky-600 dark:text-sky-500', icon: '↙' },
+  medium: { label: 'Medium', color: 'text-amber-600 dark:text-amber-500', icon: '→' },
+  high: { label: 'High', color: 'text-orange-600 dark:text-orange-500', icon: '↗' },
+  highest: { label: 'Highest', color: 'text-red-600 dark:text-red-500', icon: '↑' },
 }
 
 export function getUserInitials(name?: string, email?: string): string {

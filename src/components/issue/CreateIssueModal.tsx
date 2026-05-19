@@ -17,6 +17,9 @@ interface Props {
   defaultStatusId?: string
 }
 
+const selectClass = 'h-9 w-full rounded-md border border-gray-200 bg-white px-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100'
+const labelClass = 'text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1.5'
+
 export function CreateIssueModal({ open, onClose, projectId, workspaceSlug, projectKey, statuses, defaultStatusId }: Props) {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -50,23 +53,25 @@ export function CreateIssueModal({ open, onClose, projectId, workspaceSlug, proj
         />
 
         <div>
-          <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1.5">
+          <label htmlFor="description" className={labelClass}>
             Description <span className="text-gray-400 font-normal">(optional)</span>
           </label>
           <textarea
+            id="description"
             name="description"
-            className="h-24 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 resize-none"
+            className="h-24 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 transition-[border-color,box-shadow] duration-150 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 resize-none"
             placeholder="Add more context..."
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1.5">Status</label>
+            <label htmlFor="status_id" className={labelClass}>Status</label>
             <select
+              id="status_id"
               name="status_id"
               defaultValue={defaultStatusId || sortedStatuses[0]?.id}
-              className="h-9 w-full rounded-md border border-gray-200 bg-white px-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              className={selectClass}
             >
               {sortedStatuses.map((s) => (
                 <option key={s.id} value={s.id}>{s.name}</option>
@@ -75,11 +80,12 @@ export function CreateIssueModal({ open, onClose, projectId, workspaceSlug, proj
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1.5">Priority</label>
+            <label htmlFor="priority" className={labelClass}>Priority</label>
             <select
+              id="priority"
               name="priority"
               defaultValue="medium"
-              className="h-9 w-full rounded-md border border-gray-200 bg-white px-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
+              className={selectClass}
             >
               <option value="lowest">↓ Lowest</option>
               <option value="low">↙ Low</option>
@@ -98,12 +104,12 @@ export function CreateIssueModal({ open, onClose, projectId, workspaceSlug, proj
         />
 
         {error && (
-          <div className="rounded-md bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 px-3 py-2 text-sm text-red-600 dark:text-red-400">
+          <p className="rounded-md bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 px-3 py-2 text-sm text-red-600 dark:text-red-400">
             {error}
-          </div>
+          </p>
         )}
 
-        <div className="flex justify-end gap-2 pt-2">
+        <div className="flex justify-end gap-2 pt-1">
           <Button type="button" variant="secondary" onClick={onClose}>Cancel</Button>
           <Button type="submit" loading={loading}>Create issue</Button>
         </div>

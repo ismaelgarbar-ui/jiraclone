@@ -35,7 +35,7 @@ export default async function WorkspacesPage() {
               <Link
                 key={ws.id}
                 href={`/${ws.slug}`}
-                className="flex items-center gap-3 px-4 py-3 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors group"
+                className="flex items-center gap-3 px-4 py-3 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
               >
                 <div className="h-8 w-8 rounded-md bg-violet-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
                   {ws.name[0].toUpperCase()}

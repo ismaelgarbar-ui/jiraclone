@@ -40,7 +40,7 @@ export default async function WorkspaceDashboardPage({ params }: Props) {
             <Link
               key={project.id}
               href={`/${workspaceSlug}/${project.key}`}
-              className="p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors group"
+              className="p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
             >
               <div className="flex items-center justify-between mb-3">
                 <div className="h-7 w-7 rounded bg-violet-600 flex items-center justify-center text-white font-semibold text-xs">

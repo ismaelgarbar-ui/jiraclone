@@ -46,7 +46,7 @@ export default async function WorkspaceSettingsPage({ params }: Props) {
           {members.map((member) => (
             <div key={member.id} className="flex items-center justify-between px-4 py-3">
               <div className="flex items-center gap-2.5">
-                <div className="h-7 w-7 rounded-full bg-violet-600 flex items-center justify-center text-white text-xs font-semibold">
+                <div className="h-7 w-7 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 text-xs font-semibold">
                   {member.user_id[0].toUpperCase()}
                 </div>
                 <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{member.user_id.slice(0, 12)}…</span>

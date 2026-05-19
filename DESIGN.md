@@ -24,11 +24,11 @@ colors:
   foreground-muted-dark: "#6b7280"
   danger: "#dc2626"
   danger-hover: "#b91c1c"
-  priority-lowest: "#94a3b8"
-  priority-low: "#60a5fa"
-  priority-medium: "#facc15"
-  priority-high: "#fb923c"
-  priority-highest: "#f87171"
+  priority-lowest: "#9ca3af"
+  priority-low: "#0284c7"
+  priority-medium: "#d97706"
+  priority-high: "#ea580c"
+  priority-highest: "#dc2626"
 typography:
   display:
     fontFamily: "Geist Sans, system-ui, sans-serif"
@@ -172,11 +172,11 @@ A restrained two-mode palette: tinted neutrals carry 90%+ of the surface area; v
 ### Priority Colors
 These are the only colors outside the violet/neutral palette. Each maps to exactly one priority level and appears only in the priority icon on issue cards and the priority selector.
 
-- **Priority Lowest** (`#94a3b8`): slate-400
-- **Priority Low** (`#60a5fa`): blue-400
-- **Priority Medium** (`#facc15`): yellow-400
-- **Priority High** (`#fb923c`): orange-400
-- **Priority Highest** (`#f87171`): red-400
+- **Priority Lowest** (`#9ca3af`): gray-400. Muted; recedes into the background.
+- **Priority Low** (`#0284c7`): sky-600 (dark: sky-500). Mid-saturation blue; readable, not alarming.
+- **Priority Medium** (`#d97706`): amber-600 (dark: amber-500). Warm amber, not neon yellow.
+- **Priority High** (`#ea580c`): orange-600 (dark: orange-500). Distinct from medium; elevated urgency.
+- **Priority Highest** (`#dc2626`): red-600 (dark: red-500). Full urgency, same hue as the danger token.
 
 ### Named Rules
 **The One Instrument Rule.** Violet is used on ≤10% of any screen. It marks where to act, not what the product looks like. Adding violet to a new element is not styling — it is a claim that this element is the most important action on the screen. Make that claim deliberately.

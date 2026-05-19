@@ -129,6 +129,7 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
                 placeholder="Add a comment..."
+                aria-label="Comment text"
                 className="flex-1 h-9 rounded-md border border-gray-200 bg-white px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 transition-[border-color,box-shadow] duration-150"
               />
               <Button type="submit" size="sm" loading={submittingComment} disabled={!commentText.trim()}>

@@ -25,7 +25,7 @@ export function Avatar({ name, email, avatarUrl, size = 'md', className }: Avata
   return (
     <div
       className={cn(
-        'rounded-full bg-violet-600 text-white flex items-center justify-center font-semibold flex-shrink-0',
+        'rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 flex items-center justify-center font-semibold flex-shrink-0 select-none',
         sizeClasses[size],
         className
       )}

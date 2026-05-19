@@ -24,7 +24,7 @@ export function Sidebar({ workspace, projects, userEmail, userName }: SidebarPro
       <div className="px-3 pt-3 pb-2.5 border-b border-gray-200 dark:border-gray-800">
         <Link
           href={`/${workspace.slug}`}
-          className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-gray-200/70 dark:hover:bg-gray-800 transition-colors"
+          className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-gray-200/70 dark:hover:bg-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500"
         >
           <div className="h-5 w-5 rounded bg-violet-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
             {workspace.name[0].toUpperCase()}
@@ -94,8 +94,8 @@ export function Sidebar({ workspace, projects, userEmail, userName }: SidebarPro
             <form action={signOut}>
               <button
                 type="submit"
-                className="h-7 w-7 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                title="Sign out"
+                className="h-7 w-7 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-1"
+                aria-label="Sign out"
               >
                 <LogoutIcon />
               </button>
