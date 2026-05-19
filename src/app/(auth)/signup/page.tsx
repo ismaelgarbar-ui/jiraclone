@@ -26,12 +26,12 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-8 shadow-sm">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">Create an account</h2>
+    <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-7 shadow-sm">
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-0.5">Create account</h2>
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">Start managing projects today</p>
 
       {success ? (
-        <div className="rounded-md bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 px-4 py-3 text-sm text-green-700 dark:text-green-400">
+        <div className="rounded-md bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-3 text-sm text-gray-700 dark:text-gray-300">
           {success}
         </div>
       ) : (
@@ -66,9 +66,9 @@ export default function SignupPage() {
           />
 
           {error && (
-            <div className="rounded-md bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 px-3 py-2 text-sm text-red-600 dark:text-red-400">
+            <p className="rounded-md bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 px-3 py-2 text-sm text-red-600 dark:text-red-400">
               {error}
-            </div>
+            </p>
           )}
 
           <Button type="submit" loading={loading} className="w-full mt-1">
@@ -77,9 +77,9 @@ export default function SignupPage() {
         </form>
       )}
 
-      <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
+      <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-5">
         Already have an account?{' '}
-        <Link href="/login" className="text-violet-600 hover:text-violet-700 font-medium">
+        <Link href="/login" className="text-violet-600 dark:text-violet-400 hover:text-violet-700 font-medium transition-colors">
           Sign in
         </Link>
       </p>

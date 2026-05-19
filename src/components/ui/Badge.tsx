@@ -11,9 +11,13 @@ export function Badge({ children, color, className }: BadgeProps) {
     <span
       className={cn(
         'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium',
+        !color && 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400',
         className
       )}
-      style={color ? { backgroundColor: color + '20', color } : undefined}
+      style={color ? {
+        backgroundColor: color + '1f',
+        color,
+      } : undefined}
     >
       {children}
     </span>

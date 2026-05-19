@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-19T00:00:00Z",
+  "title": "Design System: JiraClone",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Instrument Violet",
+        "canonical": "oklch(51% 0.22 292)",
+        "tonalRamp": [
+          "oklch(20% 0.14 292)",
+          "oklch(28% 0.17 292)",
+          "oklch(36% 0.20 292)",
+          "oklch(44% 0.22 292)",
+          "oklch(51% 0.22 292)",
+          "oklch(62% 0.18 292)",
+          "oklch(74% 0.13 292)",
+          "oklch(88% 0.06 292)"
+        ]
+      },
+      "surface-light": {
+        "role": "neutral",
+        "displayName": "Canvas White",
+        "canonical": "oklch(100% 0.003 270)",
+        "tonalRamp": [
+          "oklch(15% 0.003 270)",
+          "oklch(25% 0.003 270)",
+          "oklch(38% 0.003 270)",
+          "oklch(52% 0.004 270)",
+          "oklch(66% 0.004 270)",
+          "oklch(78% 0.003 270)",
+          "oklch(90% 0.003 270)",
+          "oklch(99% 0.003 270)"
+        ]
+      },
+      "danger": {
+        "role": "semantic-error",
+        "displayName": "Alert Red",
+        "canonical": "oklch(55% 0.22 25)",
+        "tonalRamp": [
+          "oklch(22% 0.14 25)",
+          "oklch(30% 0.17 25)",
+          "oklch(38% 0.20 25)",
+          "oklch(46% 0.22 25)",
+          "oklch(55% 0.22 25)",
+          "oklch(65% 0.18 25)",
+          "oklch(76% 0.12 25)",
+          "oklch(90% 0.05 25)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page-level headings and modal titles." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings, workspace and project names." },
+      "title": { "displayName": "Title", "purpose": "Card headings, sidebar labels, active nav items." },
+      "body": { "displayName": "Body", "purpose": "Issue content, descriptions, comment text. 65ch max width." },
+      "label": { "displayName": "Label", "purpose": "Field labels, section headers (uppercase). Uppercase only for sidebar section headers." },
+      "mono": { "displayName": "Mono", "purpose": "Issue keys only (PROJ-1, BUG-42). Never for general labels." }
+    },
+    "shadows": [
+      {
+        "name": "drag-lifted",
+        "value": "0 10px 40px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.10)",
+        "purpose": "Applied to an issue card being dragged. Combined with violet ring-2 ring-violet-400."
+      },
+      {
+        "name": "modal-overlay",
+        "value": "0 25px 60px rgba(0,0,0,0.20), 0 8px 20px rgba(0,0,0,0.12)",
+        "purpose": "Modal dialogs only. Separates the panel from the blurred backdrop."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for state transitions (hover bg, focus ring). Ease-out-expo feel."
+      },
+      {
+        "name": "drag-tilt",
+        "value": "rotate(1deg)",
+        "purpose": "Applied via CSS transform on drag start. Static; not animated. Suppressed via prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The sole call-to-action. Used for create, save, submit. Violet fill marks it as the primary action.",
+      "html": "<button class=\"ds-btn-primary\">Create Issue</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 16px; background: #7c3aed; color: #fff; font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1; border: none; border-radius: 6px; cursor: pointer; transition: background 150ms cubic-bezier(0.16,1,0.3,1); outline: none; } .ds-btn-primary:hover { background: #6d28d9; } .ds-btn-primary:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #7c3aed; } .ds-btn-primary:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Supporting actions: cancel, back, secondary operations. Neutral fill, no accent.",
+      "html": "<button class=\"ds-btn-secondary\">Cancel</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 16px; background: #f3f4f6; color: #111827; font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1; border: none; border-radius: 6px; cursor: pointer; transition: background 150ms cubic-bezier(0.16,1,0.3,1); outline: none; } .ds-btn-secondary:hover { background: #e5e7eb; } .ds-btn-secondary:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #7c3aed; } .ds-btn-secondary:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive actions only: delete issue, delete workspace. Red fill makes the cost visible.",
+      "html": "<button class=\"ds-btn-danger\">Delete Issue</button>",
+      "css": ".ds-btn-danger { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 36px; padding: 0 16px; background: #dc2626; color: #fff; font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; line-height: 1; border: none; border-radius: 6px; cursor: pointer; transition: background 150ms cubic-bezier(0.16,1,0.3,1); outline: none; } .ds-btn-danger:hover { background: #b91c1c; } .ds-btn-danger:focus-visible { box-shadow: 0 0 0 2px #fff, 0 0 0 4px #dc2626; } .ds-btn-danger:disabled { opacity: 0.5; pointer-events: none; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "Single-line text field. Used for issue titles, workspace names, search.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-label\" for=\"ds-input-demo\">Issue title</label><input class=\"ds-input\" id=\"ds-input-demo\" type=\"text\" placeholder=\"What needs to be done?\" /></div>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 6px; } .ds-label { font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 500; color: #374151; line-height: 1.4; } .ds-input { height: 36px; width: 100%; padding: 0 12px; background: #ffffff; color: #111827; font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 400; border: 1px solid #e5e7eb; border-radius: 6px; outline: none; box-sizing: border-box; transition: border-color 150ms, box-shadow 150ms; } .ds-input::placeholder { color: #9ca3af; } .ds-input:focus { border-color: transparent; box-shadow: 0 0 0 2px #7c3aed; } .ds-input:disabled { opacity: 0.5; }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Pill badge showing issue status. Color is project-defined; the badge uses a 12% tint background + full-opacity text.",
+      "html": "<span class=\"ds-badge\" style=\"--badge-color: #10b981\"><span class=\"ds-badge-dot\"></span>In Progress</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 9999px; background: color-mix(in srgb, var(--badge-color) 15%, transparent); color: var(--badge-color); font-family: 'Geist Sans', system-ui, sans-serif; font-size: 12px; font-weight: 500; line-height: 1.4; } .ds-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--badge-color); flex-shrink: 0; }"
+    },
+    {
+      "name": "Issue Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "The primary content unit of the Kanban board. Priority icon + title + issue key. Flat at rest; lifts on drag.",
+      "html": "<div class=\"ds-issue-card\"><div class=\"ds-issue-card-top\"><span class=\"ds-priority ds-priority-high\" title=\"High\">↗</span><p class=\"ds-issue-title\">Add OAuth provider support</p></div><div class=\"ds-issue-card-bottom\"><span class=\"ds-issue-key\">AUTH-7</span><span class=\"ds-issue-date\">Jun 3</span></div></div>",
+      "css": ".ds-issue-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; cursor: grab; user-select: none; transition: box-shadow 150ms cubic-bezier(0.16,1,0.3,1); } .ds-issue-card:active { cursor: grabbing; } .ds-issue-card-top { display: flex; align-items: flex-start; gap: 8px; } .ds-priority { font-size: 14px; font-weight: 500; margin-top: 2px; flex-shrink: 0; } .ds-priority-lowest { color: #94a3b8; } .ds-priority-low { color: #60a5fa; } .ds-priority-medium { color: #facc15; } .ds-priority-high { color: #fb923c; } .ds-priority-highest { color: #f87171; } .ds-issue-title { font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 400; color: #111827; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } .ds-issue-title:hover { color: #7c3aed; } .ds-issue-card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; } .ds-issue-key { font-family: 'Geist Mono', ui-monospace, monospace; font-size: 12px; color: #9ca3af; } .ds-issue-date { font-family: 'Geist Sans', system-ui, sans-serif; font-size: 12px; color: #9ca3af; }"
+    },
+    {
+      "name": "Sidebar Nav Item",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Single nav link in the sidebar. Active state uses the violet tint background. Default is transparent.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-item ds-nav-item--active\" href=\"#\"><svg class=\"ds-nav-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7\"/></svg><span>Board</span></a><a class=\"ds-nav-item\" href=\"#\"><svg class=\"ds-nav-icon\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M4 6h16M4 10h16M4 14h16M4 18h16\"/></svg><span>List</span></a></nav>",
+      "css": ".ds-nav { display: flex; flex-direction: column; gap: 1px; } .ds-nav-item { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 6px; text-decoration: none; font-family: 'Geist Sans', system-ui, sans-serif; font-size: 14px; font-weight: 400; color: #4b5563; transition: background 120ms cubic-bezier(0.16,1,0.3,1), color 120ms; } .ds-nav-item:hover { background: #f3f4f6; color: #111827; } .ds-nav-item--active { background: #ede9fe; color: #6d28d9; font-weight: 600; } .ds-nav-icon { width: 16px; height: 16px; flex-shrink: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Instrument Panel",
+    "overview": "Every pixel earns its place the same way a gauge does: by telling you something true about the state of the system. The JiraClone interface is a cockpit in daylight — every element is functional, nothing is decorative chrome. When you land on the Kanban board, you see work, not the product's marketing. The sidebar carries wayfinding; the board carries signal; the accent color fires only when something demands attention.\n\nThe typography is tight and unbranded (Geist Sans, a workhorse not a personality), the surfaces are near-white and near-black with thin, honest borders. The violet accent is restrained to ≤10% of any screen: active nav states, primary buttons, issue drag handles, focus rings. Its rarity is the point.\n\nThis system explicitly rejects: Monday.com/ClickUp colorful overload (pastel-rainbow columns, feature-badge sidebars, marketing-UI disguised as a tool) and Jira's nested modal hell. There is one depth at a time. State is communicated by color; structure is communicated by space.",
+    "keyCharacteristics": [
+      "Dual-mode (light/dark) with near-white and near-black surfaces, not gray-gradient theater",
+      "One accent (violet-600 / #7c3aed) used sparingly and consistently",
+      "Priority and status indicators are the only multi-color elements",
+      "Borders are always single-weight, never accent-colored stripes",
+      "Typography scale compressed into 4 sizes; weight carries the hierarchy",
+      "Spacing varies for rhythm; same padding everywhere is monotony"
+    ],
+    "rules": [
+      {
+        "name": "The One Instrument Rule",
+        "body": "Violet is used on ≤10% of any screen. It marks where to act, not what the product looks like. Adding violet to a new element is a claim that this element is the most important action on screen.",
+        "section": "colors"
+      },
+      {
+        "name": "The State-First Rule",
+        "body": "Color communicates status, priority, or interactive state. It never communicates personality or decoration. If a color has no functional meaning, remove it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Size Rule",
+        "body": "Nearly all UI text is either 14px or 12px. Hierarchy lives in weight and color, not scale. Only page-level headings break to 18px or 24px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "Surfaces rest at their tonal level with borders, not shadows. Shadows appear only as a response to state (dragging, modal overlay).",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use #7c3aed (Instrument Violet) as the sole accent.",
+      "Do use weight contrast (400 vs 600) to establish hierarchy within the 14px size.",
+      "Do let the status color live in the badge background tint and column header dot.",
+      "Do keep issue cards flat at rest. The drag shadow and ring are the only lift.",
+      "Do use 1px borders at the canonical colors.",
+      "Do respect prefers-reduced-motion. Suppress drag tilt and transitions at the OS level.",
+      "Do use Geist Mono only for machine-generated identifiers (issue keys)."
+    ],
+    "donts": [
+      "Don't add border-left or border-right wider than 1px as a colored accent stripe on cards, list items, or sidebar items.",
+      "Don't use violet as a background fill on content surfaces.",
+      "Don't add a second accent color.",
+      "Don't use gradient text (background-clip: text with a gradient).",
+      "Don't add glassmorphism to cards, sidebar, or navigation.",
+      "Don't add celebration animations, empty-state mascots, or success color flashes.",
+      "Don't build a hero-metric template anywhere in the product.",
+      "Don't nest cards.",
+      "Don't use Tailwind's purple-600 (#9333ea) — use violet-600 (#7c3aed)."
+    ]
+  }
+}

@@ -54,67 +54,65 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
 
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-8">
-        {/* Main content */}
-        <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_256px] gap-8">
+        {/* Main */}
+        <div className="space-y-6 min-w-0">
           {/* Title */}
           {editing ? (
             <Input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="text-xl font-bold h-12 text-gray-900 dark:text-gray-100"
+              className="text-base font-semibold"
             />
           ) : (
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{issue.title}</h1>
+            <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100 leading-snug">{issue.title}</h1>
           )}
 
           {/* Description */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Description</h3>
+            <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Description</p>
             {editing ? (
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full h-40 rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-violet-500 resize-none"
+                className="w-full h-36 rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent resize-none transition-[border-color,box-shadow] duration-150"
                 placeholder="Add a description..."
               />
             ) : (
               <div
-                className="text-sm text-gray-600 dark:text-gray-400 min-h-[60px] rounded-lg bg-gray-50 dark:bg-gray-900 p-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="text-sm text-gray-600 dark:text-gray-400 min-h-[56px] rounded-lg bg-gray-50 dark:bg-gray-900/50 px-4 py-3 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors"
                 onClick={() => setEditing(true)}
               >
-                {description || <span className="text-gray-400 dark:text-gray-500 italic">Click to add description...</span>}
+                {description || <span className="text-gray-400 dark:text-gray-500 italic text-xs">Click to add description</span>}
               </div>
             )}
           </div>
 
-          {/* Edit actions */}
-          {editing && (
+          {/* Actions */}
+          {editing ? (
             <div className="flex gap-2">
               <Button onClick={handleSave} loading={saving} size="sm">Save</Button>
               <Button variant="secondary" size="sm" onClick={() => setEditing(false)}>Cancel</Button>
             </div>
-          )}
-
-          {!editing && (
+          ) : (
             <div className="flex gap-2">
-              <Button variant="secondary" size="sm" onClick={() => setEditing(true)}>Edit</Button>
+              <Button variant="ghost" size="sm" onClick={() => setEditing(true)}>Edit</Button>
               <Button variant="danger" size="sm" loading={deleting} onClick={handleDelete}>Delete</Button>
             </div>
           )}
 
           {/* Comments */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-              Comments <span className="text-gray-400 font-normal">({comments.length})</span>
-            </h3>
+            <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+              Comments {comments.length > 0 && <span className="normal-case font-normal">({comments.length})</span>}
+            </p>
 
-            <div className="space-y-3 mb-4">
+            <div className="space-y-2 mb-4">
               {comments.map((comment) => (
-                <div key={comment.id} className="bg-gray-50 dark:bg-gray-900 rounded-lg p-3 border border-gray-100 dark:border-gray-800">
+                <div key={comment.id} className="rounded-lg bg-gray-50 dark:bg-gray-900/50 px-4 py-3 border border-gray-100 dark:border-gray-800">
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                      {comment.author_id === currentUserId ? 'You' : 'Team member'}
+                      {comment.author_id === currentUserId ? 'You' : 'Member'}
                     </span>
                     <span className="text-xs text-gray-400 dark:text-gray-500">{formatRelativeDate(comment.created_at)}</span>
                   </div>
@@ -122,7 +120,7 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
                 </div>
               ))}
               {comments.length === 0 && (
-                <p className="text-sm text-gray-400 dark:text-gray-500 italic">No comments yet</p>
+                <p className="text-xs text-gray-400 dark:text-gray-500">No comments yet</p>
               )}
             </div>
 
@@ -131,21 +129,21 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
                 placeholder="Add a comment..."
-                className="flex-1 h-9 rounded-md border border-gray-200 bg-white px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500"
+                className="flex-1 h-9 rounded-md border border-gray-200 bg-white px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 transition-[border-color,box-shadow] duration-150"
               />
               <Button type="submit" size="sm" loading={submittingComment} disabled={!commentText.trim()}>
-                Comment
+                Post
               </Button>
             </form>
           </div>
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-4">
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 space-y-4">
+        <div className="space-y-1">
+          <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
             {/* Status */}
-            <div>
-              <label className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">Status</label>
+            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+              <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Status</p>
               <select
                 value={statusId}
                 onChange={async (e) => {
@@ -161,8 +159,8 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
             </div>
 
             {/* Priority */}
-            <div>
-              <label className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">Priority</label>
+            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+              <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Priority</p>
               <select
                 value={priority}
                 onChange={async (e) => {
@@ -181,8 +179,8 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
             </div>
 
             {/* Due date */}
-            <div>
-              <label className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider block mb-2">Due date</label>
+            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+              <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Due date</p>
               <input
                 type="date"
                 value={dueDate}
@@ -195,14 +193,14 @@ export function IssueDetailClient({ issue, statuses, comments, workspaceSlug, pr
             </div>
 
             {/* Meta */}
-            <div className="pt-2 border-t border-gray-200 dark:border-gray-700 space-y-2">
-              <div className="flex justify-between text-xs">
-                <span className="text-gray-500 dark:text-gray-400">Created</span>
-                <span className="text-gray-700 dark:text-gray-300">{formatRelativeDate(issue.created_at)}</span>
+            <div className="px-4 py-3 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-400 dark:text-gray-500">Created</span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">{formatRelativeDate(issue.created_at)}</span>
               </div>
-              <div className="flex justify-between text-xs">
-                <span className="text-gray-500 dark:text-gray-400">Updated</span>
-                <span className="text-gray-700 dark:text-gray-300">{formatRelativeDate(issue.updated_at)}</span>
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-400 dark:text-gray-500">Updated</span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">{formatRelativeDate(issue.updated_at)}</span>
               </div>
             </div>
           </div>

@@ -22,9 +22,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-8 shadow-sm">
-      <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-1">Welcome back</h2>
-      <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">Sign in to your account</p>
+    <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-7 shadow-sm">
+      <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-0.5">Sign in</h2>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">Enter your credentials to continue</p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Input
@@ -47,9 +47,9 @@ export default function LoginPage() {
         />
 
         {error && (
-          <div className="rounded-md bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 px-3 py-2 text-sm text-red-600 dark:text-red-400">
+          <p className="rounded-md bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900 px-3 py-2 text-sm text-red-600 dark:text-red-400">
             {error}
-          </div>
+          </p>
         )}
 
         <Button type="submit" loading={loading} className="w-full mt-1">
@@ -57,9 +57,9 @@ export default function LoginPage() {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-6">
-        Don&apos;t have an account?{' '}
-        <Link href="/signup" className="text-violet-600 hover:text-violet-700 font-medium">
+      <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-5">
+        No account?{' '}
+        <Link href="/signup" className="text-violet-600 dark:text-violet-400 hover:text-violet-700 font-medium transition-colors">
           Sign up
         </Link>
       </p>

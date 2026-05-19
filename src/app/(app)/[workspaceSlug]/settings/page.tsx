@@ -21,39 +21,37 @@ export default async function WorkspaceSettingsPage({ params }: Props) {
   const isOwner = workspace.owner_id === user.id
 
   return (
-    <div className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-8">Settings</h1>
+    <div className="p-8 max-w-xl">
+      <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-8">Settings</h1>
 
-      {/* Workspace info */}
       <section className="mb-8">
-        <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-4">Workspace</h2>
-        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 space-y-3">
-          <div>
-            <span className="text-xs text-gray-500 dark:text-gray-400 block mb-0.5">Name</span>
+        <h2 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">Workspace</h2>
+        <div className="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+          <div className="px-4 py-3 flex items-center justify-between">
+            <span className="text-xs text-gray-500 dark:text-gray-400">Name</span>
             <span className="text-sm font-medium text-gray-900 dark:text-gray-100">{workspace.name}</span>
           </div>
-          <div>
-            <span className="text-xs text-gray-500 dark:text-gray-400 block mb-0.5">Slug</span>
-            <span className="text-sm font-mono text-gray-700 dark:text-gray-300">/{workspace.slug}</span>
+          <div className="px-4 py-3 flex items-center justify-between">
+            <span className="text-xs text-gray-500 dark:text-gray-400">URL</span>
+            <span className="text-xs font-mono text-gray-600 dark:text-gray-400">/{workspace.slug}</span>
           </div>
         </div>
       </section>
 
-      {/* Members */}
       <section className="mb-8">
-        <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-4">
-          Members <span className="text-gray-400 font-normal">({members.length})</span>
+        <h2 className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-3">
+          Members ({members.length})
         </h2>
-        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
+        <div className="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800">
           {members.map((member) => (
-            <div key={member.id} className="flex items-center justify-between px-5 py-3">
-              <div className="flex items-center gap-3">
-                <div className="h-8 w-8 rounded-full bg-violet-600 flex items-center justify-center text-white text-sm font-semibold">
+            <div key={member.id} className="flex items-center justify-between px-4 py-3">
+              <div className="flex items-center gap-2.5">
+                <div className="h-7 w-7 rounded-full bg-violet-600 flex items-center justify-center text-white text-xs font-semibold">
                   {member.user_id[0].toUpperCase()}
                 </div>
-                <span className="text-sm text-gray-700 dark:text-gray-300 font-mono text-xs">{member.user_id.slice(0, 8)}…</span>
+                <span className="text-xs font-mono text-gray-500 dark:text-gray-400">{member.user_id.slice(0, 12)}…</span>
               </div>
-              <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 capitalize">
+              <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 capitalize">
                 {member.role}
               </span>
             </div>
@@ -61,15 +59,14 @@ export default async function WorkspaceSettingsPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Danger zone */}
       {isOwner && (
         <section>
-          <h2 className="text-base font-semibold text-red-600 dark:text-red-400 mb-4">Danger zone</h2>
-          <div className="bg-white dark:bg-gray-900 rounded-xl border border-red-200 dark:border-red-900 p-5">
-            <div className="flex items-center justify-between">
+          <h2 className="text-xs font-semibold text-red-500 dark:text-red-400 uppercase tracking-wider mb-3">Danger zone</h2>
+          <div className="bg-white dark:bg-gray-900 rounded-lg border border-red-200 dark:border-red-900/50 px-4 py-3">
+            <div className="flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-medium text-gray-900 dark:text-gray-100">Delete workspace</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Permanently delete this workspace and all its data</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Permanently removes all projects and issues</p>
               </div>
               <form
                 action={async () => {
